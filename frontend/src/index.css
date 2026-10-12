@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    @apply text-brand-black bg-white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom UI Utility Classes */
+.btn-primary {
+  @apply bg-brand-primary hover:bg-brand-shade2 active:bg-brand-shade3 text-white font-medium px-5 py-2.5 rounded transition-all duration-150 inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed shadow-sm hover:shadow;
+}
+
+.btn-secondary {
+  @apply border border-brand-primary text-brand-primary hover:bg-brand-tint5 active:bg-brand-tint4 font-medium px-5 py-2.5 rounded transition-all duration-150 inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed;
+}
+
+.btn-ghost {
+  @apply text-brand-dGrey hover:text-brand-black hover:bg-brand-silver font-medium px-4 py-2 rounded transition-all duration-150 inline-flex items-center justify-center gap-2;
+}
+
+.btn-danger {
+  @apply bg-brand-error hover:bg-red-700 text-white font-medium px-4 py-2 rounded transition-all duration-150 inline-flex items-center justify-center gap-2;
+}
+
+.card {
+  @apply bg-white rounded-lg border border-gray-100 shadow-card hover:shadow-cardHover transition-shadow duration-200 p-6;
+}
+
+.badge {
+  @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
