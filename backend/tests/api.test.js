@@ -11,7 +11,7 @@ describe('GreenRoute Automated Test Suite', () => {
     process.env.NODE_ENV = 'test';
     process.env.USE_MEMORY_DB_IF_LOCAL_FAILS = 'true';
     await connectDB();
-  });
+  },120000);
 
   afterAll(async () => {
     await disconnectDB();
