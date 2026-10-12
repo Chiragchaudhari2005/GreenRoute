@@ -1,0 +1,57 @@
+
+pipeline {
+    agent any
+
+    options {
+        timestamps()
+        disableConcurrentBuilds()
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Verify Tools') {
+            steps {
+                bat 'git --version'
+                bat 'node --version'
+                bat 'npm --version'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat 'npm ci --prefix backend'
+                bat 'npm ci --prefix frontend'
+            }
+        }
+
+        stage('Backend Tests') {
+            steps {
+                bat 'npm run test:backend'
+            }
+        }
+
+        stage('Build Frontend') {
+            steps {
+                bat 'npm run build:frontend'
+            }
+        }
+    }
+
+    post {
+        success {
+            archiveArtifacts(
+                artifacts: 'frontend/dist/**',
+                fingerprint: true
+            )
+        }
+
+        always {
+            echo 'GreenRoute CI pipeline execution completed.'
+        }
+    }
+}
