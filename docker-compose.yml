@@ -1,9 +1,6 @@
-version: '3.8'
-
 services:
   mongodb:
     image: mongo:7.0
-    container_name: greenroute-mongodb
     restart: unless-stopped
     ports:
       - "27017:27017"
@@ -14,7 +11,7 @@ services:
     networks:
       - greenroute-network
     healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -23,7 +20,6 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: greenroute-backend
     restart: unless-stopped
     ports:
       - "5000:5000"
@@ -40,7 +36,7 @@ services:
     networks:
       - greenroute-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      test: [ "CMD", "curl", "-f", "http://localhost:5000/api/health" ]
       interval: 15s
       timeout: 5s
       retries: 3
@@ -49,7 +45,6 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: greenroute-frontend
     restart: unless-stopped
     ports:
       - "3000:80"
