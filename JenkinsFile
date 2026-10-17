@@ -42,12 +42,14 @@ pipeline {
         }
 
         
+        
         stage('Docker Build') {
             steps {
-                bat 'docker build -t greenroute-backend:latest ./backend'
-                bat 'docker build -t greenroute-frontend:latest ./frontend'
+                bat '"C:\\Users\\Chirag chaudhari\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t greenroute-backend:latest ./backend'
+                bat '"C:\\Users\\Chirag chaudhari\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t greenroute-frontend:latest ./frontend'
             }
         }
+
 
     }
 
