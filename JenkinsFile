@@ -51,6 +51,7 @@ pipeline {
         }
 
         
+
         stage('Deploy with Docker Compose') {
             steps {
                 withCredentials([
@@ -60,11 +61,12 @@ pipeline {
                     )
                 ]) {
                     bat '''
-                        "C:\\Users\\Chirag chaudhari\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" compose up -d --build
+                        "C:\\Users\\Chirag chaudhari\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker-compose.exe" up -d --build
                     '''
                 }
             }
         }
+
 
 
 
