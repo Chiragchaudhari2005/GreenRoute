@@ -31,8 +31,8 @@ services:
       PORT: 5000
       NODE_ENV: production
       MONGODB_URI: mongodb://mongodb:27017/greenroute
-      JWT_SECRET: super_secure_greenroute_jwt_secret_dev_2026
-      JWT_EXPIRE: 7d
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env.docker}
+      JWT_EXPIRE: ${JWT_EXPIRE:-30d}
       CLIENT_URL: http://localhost:3000
     depends_on:
       mongodb:

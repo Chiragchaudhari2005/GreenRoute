@@ -40,6 +40,15 @@ pipeline {
                 bat 'npm run build:frontend'
             }
         }
+
+        
+        stage('Docker Build') {
+            steps {
+                bat 'docker build -t greenroute-backend:latest ./backend'
+                bat 'docker build -t greenroute-frontend:latest ./frontend'
+            }
+        }
+
     }
 
     post {
