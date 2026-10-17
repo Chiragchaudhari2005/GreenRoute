@@ -134,7 +134,7 @@ PASS tests/api.test.js
 cd backend
 npm install
 
-# In frontend folder
+# In frontend directoryy
 cd ../frontend
 npm install
 ```
