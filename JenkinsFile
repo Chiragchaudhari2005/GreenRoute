@@ -50,6 +50,23 @@ pipeline {
             }
         }
 
+        
+        stage('Deploy with Docker Compose') {
+            steps {
+                withCredentials([
+                    string(
+                        credentialsId: 'greenroute-jwt-secret',
+                        variable: 'JWT_SECRET'
+                    )
+                ]) {
+                    bat '''
+                        "C:\\Users\\Chirag chaudhari\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" compose up -d --build
+                    '''
+                }
+            }
+        }
+
+
 
     }
 
